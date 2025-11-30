@@ -1,0 +1,51 @@
+									INTRODUCTION À SQL SERVER
+
+SQL Server est un SGBDR développé et commercialisé par Microsoft. C'est un logiciel permettant le stockage de données de façon cohérente et organisé de manière à pouvoir facilement consulté et modifié leurs contenu. 
+
+
+
+
+c'est une implémentation du SQL qui prend en charge les procédures stocké ainsi que les déclencheurs. Il est originellement multi-base et multi-schéma.
+	Exemple:
+		SELECT * FROM BASE A.dbo.TABLE1 AS T1 INNER JOIN BASE B.dbo.TABLE2 AS T2 ON T1.ID = T2.ID; 
+		Cette commande permet de lier deux tables dans deux bases de données.
+
+SQL Server regorge de plusieurs éditions qui offrent différents niveaux de services. Les deux versions gratuites sont: 
+	* l'édition développé comprenant toute les fonctionnalités pour être utilisé comme base de données de développement et de teste dans des environnement non dédié à la production
+	* ainsi qu'une version express idéal pour le développement et la production d'application de bureaux, d'application web et de petite application serveurs.
+Les autres éditions ne sont pas gratuites, Microsoft vends une version entreprise qui offre une sélection complète de fonctionnalités de SQL Server ainsi qu'une édition standard avec des fonctionnalités partielle et d'autre limites tels que la taille de la mémoire.
+
+		Devoir: présenté les caractéristique de chaque édition SQL Server.
+
+La première version de SQL Server a vue le jour en 1989, aujourd'hui il est à la version 22.
+C'est grâce au protocole TDS(Tabular Data Stream) qu'un client peux se connecté à SQL Server, ce protocole permet le transfère de requêtes et de réponse entre le(s) client(s) et SQL Server.
+
+									I - Fonctionnement 
+				
+On distingue deux types de serveurs sur lesquels l'environnement SQL Server peut être déployé:
+	* le serveur OLTP(OnLine Transactinnal Proccessive) qui est un serveur transactionnel sur lequel un certain nombre de transactions de type peuvent être exécuté. La plus part du temps les systèmes OLTP sont utilisé pour la saisi des commandes, des transactions financières, la gestion de la relation client et les ventes, etc. Ces systèmes comptent un grand nombre d'utilisateurs qui effectuent des transactions courtes et retourne relativement peu d'enregistrement. En resumé, un serveur OLTP possède les caractéristiques suivant:
+		- les transactions impliquant les petites quantité de données;
+		- posédé un grand nombre d'utilisateurs;
+		- les temps de reponses sont acces rapide et demande une grande disponibilité;
+	* le serveur OLAP(OnLine Analytical Proccessing), c'est un serveur décisionnel qui permet de consolidé les données venant de source multiple grâce à un ETL(Extraction Transformation, Loading), qui permet d'extrait des données venant de sources multiples telsque Excel, XML, MySQL, etc. les transforme en un même format puis les chargent dans un DATAWARE HOUSE. OLAP éffectue une annalyse multi-dimensionnel des données d'entreprise ce qui offre la possibilité d'éffectuer les calculs complexe. Il est utilisé en entreprise pour la gestion de la performance, la planification, les prévisions, l'annalyse, la budgetissation des rapport finantiers, etc. Il fournit au analyste et manageur des infos dont ils ont besions pour prendre des décisions. Néamoins il ne comporte pas un grand nombre d'utilisateurs. 
+	En resumé un serveur OLAP permet :
+		- une analyse rapide de données ;
+		- d'organiser et de comparer les données ;
+		- éffectué du reporting ;
+		- d'éffectuer les calculs complexe ;
+		- manipuler un nombre important de données(pouvant allé à plusieurs tera-octet).
+		
+									II - Les composant de SQL Serveur : 
+								------------------------------------------------
+Microsoft SQL Server est composé de plusieurs logiciels qui s'exécutent sous forme de services(types d'application qui s'exécute en arrière-plan).
+SQL Server est composé de 05 principaux services: 
+	- SL Server, c'est le services moteurs de base de données qui correspond à une base instance SQL Server. Ce composant s'execute en tant que service windows et est reférnece sur le MS SQLSERVER. Pour l'instance pas défaut MSSQLSERVER$ nom_de_instance. Le nom d'une instance est défine lors de l'installation.
+	- SQL SERVER INTEGRATION SERVICE(SSIS): c'est le composant d'import-export de transfère et de transformation de données. Il intègre les assistants pour la création de ETL.
+	- SQL SERVER ANALYSIS SERVICE(SSAS): c'est le composant ideal pour les projets décisionnel. Ce composant est un outil d'analyse OLAP et de DATA MINING et permet de construire des CUBE OLAP(base de données à plusieurs dimension: ROLAP, MOLAP, HOLAP avec la particularité selon laquelle MOLAP est plus rapide et plus performante que ROLAP mais limité en taille(GOK)).
+	- SQL SERVER REPORTING SERVICE(SSRS): c'est grâce à ce composant que nous pouvons restitué nos données provenant de notre entrepos de sous forme de rapport(tableau, graphique, etc)
+	- AGENT SQL : il est en charge de la surveillance de SQL SERVER, ce composant gère également l'exécution des tâches planifié et le suivit des alert. IL est directement lié à une instance SQL SERVER et est reférencé par défaut dans le gestionnaire de service Windows sous le nom: SQL SERVER AGENT et par SQL SERVER AGENT(nom instance) dans le cas d'une instance nommé.
+	
+									III - Les outils : 
+								------------------------------
+
+
